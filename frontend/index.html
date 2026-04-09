@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIT IAM System</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-globes">
+        <div class="globe g1"></div>
+        <div class="globe g2"></div>
+        <div class="globe g3"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1><span class="highlight">JIT</span> IAM System</h1>
+            <p>Temporary Access. Maximum Security. Principle of Least Privilege.</p>
+        </header>
+
+        <main>
+            <div class="card resource-list-card">
+                <h2>Active Resources</h2>
+                <div class="scroll-box" id="resource-list">
+                    <div class="loading">Loading resources...</div>
+                </div>
+            </div>
+
+            <div class="card req-card">
+                <h2>Request Access</h2>
+                <form id="access-form">
+                    <div class="input-group">
+                        <label for="dev-id">Developer ID</label>
+                        <input type="text" id="dev-id" placeholder="e.g. alice_dev" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="res-id">Resource ID</label>
+                        <input type="text" id="res-id" placeholder="Select from left..." required>
+                    </div>
+                    <div class="input-group">
+                        <label for="reason">Reason for Access</label>
+                        <input type="text" id="reason" placeholder="Investigating CPU spikes" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Request Access</button>
+                    <div id="request-output" class="output-box hidden"></div>
+                </form>
+            </div>
+            
+            <div class="card status-card">
+                <h2>Check Request Status</h2>
+                <div class="input-group">
+                    <label for="req-id">Request ID</label>
+                    <input type="text" id="req-id" placeholder="Enter request ID">
+                </div>
+                <!-- Since there is no actual Slack during local demo, add a bypass dev button to auto approve -->
+                <button id="check-status-btn" class="btn-secondary">Check Status</button>
+                <div id="status-output" class="output-box hidden"></div>
+            </div>
+
+            <div class="card dev-tools-card">
+                <h2>Mock Resources (Demo)</h2>
+                <button id="mock-vm-btn" class="btn-outline">Register Dummy VM</button>
+                <button id="mock-db-btn" class="btn-outline">Register Dummy DB</button>
+            </div>
+        </main>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
